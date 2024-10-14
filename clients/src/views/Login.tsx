@@ -12,9 +12,9 @@ export default function LoginForm() {
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
 
-  function handleLogin(username: string, password: string) {
-    if (username === "Trustacean" && password === "admin") {
-      authContext.login(username, password)
+  async function handleLogin(e: React.FormEvent) {
+    e.preventDefault()
+    if (await authContext.login(username, password)) {
       navigate('/dashboard')
     }
   }
@@ -24,7 +24,7 @@ export default function LoginForm() {
       <div className="rounded-lg shadow-2xl bg-gradient-to-r from-indigo-200 from-10% via-sky-200 via-30% to-emerald-200 to-90%">
         <TitleComponent />
         <h2 className="text-2xl text-center mb-3">Login</h2>
-        <form className="flex flex-col space-y-4  px-8 py-4 bg-slate-100 rounded-b-lg">
+        <form className="flex flex-col space-y-4  px-8 py-4 bg-slate-100 rounded-b-lg" onSubmit={handleLogin}>
           {authContext.isAuthenticated ? <p className="text-green-500 text-center">Authenticated</p> : <p className="text-red-500 text-center">Not Authenticated</p>}
           <label htmlFor="username">Username</label>
           <input type="text" id="username" className="border p-1" value={username} onChange={handleUsernameChange => {
@@ -35,7 +35,7 @@ export default function LoginForm() {
             setPassword(handlePasswordChange.target.value)
           }} />
           <div className='w-full flex'>
-            <ButtonComponent text="Login" onClick={() => { handleLogin(username, password) }} hoverExpand={true} maxWidth='max-w-24' type='submit' />
+            <ButtonComponent text="Login" hoverExpand={true} maxWidth='max-w-24' type='submit' />
           </div>
         </form>
       </div>

@@ -24,6 +24,11 @@ public class UserResources {
         this.service = service;
     }
 
+    @GetMapping("/basicauth")
+    public String basicauth() {
+        return "Successful Authentication!";
+    }
+
     @GetMapping("/users")
     public List<User> retrieveAllUsers() {
         return service.findAll();
