@@ -31,9 +31,9 @@ npm start
 5. Run the [RestfulWebApplicationService.java](server\src\main\java\com\trustacean\restful_web_services\RestfulWebServicesApplication.java)
 
 ## Roadmap
-- &#x2611; Implement CRUD for todo items
-- &#x2610; Add user authentication and management (CRUD for Users)
-- &#x2610; Add database
+- [x] Implement CRUD for todo items
+- [ ] Add user authentication and management (CRUD for Users)
+- [ ] Add database
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
